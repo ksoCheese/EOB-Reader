@@ -38,7 +38,7 @@ window.columnconfigure(0, weight=1)
 
 #Greeting
 greeting = tk.Label(window, text="WELCOME TO EOB RECOUPMENT FINDER",
-    font="Helvetica 18 bold", width=55, height=3)
+    font="Helvetica 18 bold", width=55)
 greeting.grid(row=0, column=0, sticky='nsew', padx=5, pady=5)
 
 #Browse PDF
@@ -47,14 +47,13 @@ entry = tk.Entry(window, width=35)
 browse_button = tk.Button(window, text="Browse", width=10, height=2, bg='gray20', fg='black',
     command=browse_pdf)
 
-label.grid(row=1, column=0, sticky="w", padx=5)
+label.grid(row=1, column=0, sticky="w", padx=20)
 entry.grid(row=1, column=0, padx=5)
 browse_button.grid(row=1, column=0, sticky="e", padx=5)
 
 #Process PDF
-process_button = tk.Button(window, text="Process PDF",fg='black',
-    command=process_pdf)
-process_button.grid(row=2, column=0, sticky="nsew", padx=150, pady=10)
+process_button = tk.Button(window, text="Process PDF", command=process_pdf)
+process_button.grid(row=2, column=0, sticky="nsew", padx=200, pady=20)
 
 window.mainloop()
 
