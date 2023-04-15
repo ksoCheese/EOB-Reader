@@ -1,6 +1,7 @@
 import PyPDF2
 import re
 import openpyxl
+import os
 
 # create function to accept file path as argument and return data
 #pdf_path = '/Users/kso/downloads/HusainEOB.pdf'
@@ -56,13 +57,22 @@ def extract_data_from_pdf(pdf_path):
                         results.append({'insurance': insurance, 'phrase': phrase, 'amount': amount})
     return results
 
-#create function to save results to spreadsheet
+# create function to save results to spreadsheet
+def save_results(results, output_file, mode='new'):
+    if mode == 'new':
+        # Write the results to a new excel spreadsheet
+        workbook = openpyxl.Workbook()
+        worksheet = workbook.active
+        worksheet.append(['Insurance', 'Phrase', 'Amount'])
+    else:  # mode == 'update'
+        if os.path.exists(output_file):
+            workbook = openpyxl.load_workbook(output_file)
+            worksheet = workbook.active
+        else:
+            messagebox.showerror(message="File not found. Please choose the 'Create new spreadsheet' option.", icon="warning")
+            return
 
-def save_results(results, output_file):
-    # Write the results to an excel spreadsheet
-    workbook = openpyxl.Workbook()
-    worksheet = workbook.active
-    worksheet.append(['Insurance', 'Phrase', 'Amount'])
+    # Append the results to the spreadsheet
     for result in results:
         worksheet.append([result['insurance'], result['phrase'], result['amount']])
     workbook.save(output_file)
