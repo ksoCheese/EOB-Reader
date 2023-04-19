@@ -53,7 +53,7 @@ greeting.grid(row=0, column=0, sticky='nsew', padx=5, pady=5)
 #Browse PDF
 label = tk.Label(window, text="PDF FILE")
 entry = tk.Entry(window, width=35)
-browse_button = tk.Button(window, text="Browse", width=10, height=2, bg='gray20', fg='black',
+browse_button = tk.Button(window, text="Browse", width=10, height=2, bg='lightgray', fg='black',
     command=browse_pdf)
 
 label.grid(row=1, column=0, sticky="w", padx=20)
