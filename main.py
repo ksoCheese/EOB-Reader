@@ -13,7 +13,7 @@ def extract_data_from_pdf(pdf_path):
         pdf_reader = PyPDF2.PdfReader(pdf_file)
 
         # Get the number of pages in the PDF
-        num_pages = pdf_reader.getNumPages()
+        num_pages = len(pdf_reader.pages)
 
         # Create a list to store the results
         results = []
