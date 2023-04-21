@@ -1,4 +1,5 @@
 import PyPDF2
+from PyPDF2 import PdfReader
 import re
 import openpyxl
 import os
@@ -9,7 +10,7 @@ def extract_data_from_pdf(pdf_path):
     # Open the PDF file
     with open(pdf_path, 'rb') as pdf_file:
         # Create a PDF reader object
-        pdf_reader = PyPDF2.PdfFileReader(pdf_file)
+        pdf_reader = PyPDF2.PdfReader(pdf_file)
 
         # Get the number of pages in the PDF
         num_pages = pdf_reader.getNumPages()
