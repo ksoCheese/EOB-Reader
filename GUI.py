@@ -1,17 +1,16 @@
 import os
 import tkinter as tk
+import tkinter.ttk as ttk
 from tkinter import filedialog, messagebox
 from main import extract_data_from_pdf, save_results
 
-#functions to open file dialog and get PDF file path
-
+# Functions to open file dialog and get PDF file path
 def browse_pdf():
     file_path = filedialog.askopenfilename(filetypes=[("PDF FILES", "*.pdf")])
     entry.delete(0, tk.END)
     entry.insert(0, file_path)
 
-#function to process PDF file and save results
-
+# Function to process PDF file and save results
 def process_pdf():
     pdf_path = entry.get()
     if not pdf_path:
@@ -36,8 +35,7 @@ def process_pdf():
     # Open the output file with the default application
     os.system(f'open "{output_file}"')
 
-
-#GUI setup
+# GUI setup
 window = tk.Tk()
 window.title("EOB Recoupment Finder")
 
@@ -45,16 +43,15 @@ window.geometry("600x300+10+20")
 window.rowconfigure([0, 1, 2, 3, 4], weight=1)
 window.columnconfigure(0, weight=1)
 
-#Greeting
+# Greeting
 greeting = tk.Label(window, text="WELCOME TO EOB RECOUPMENT FINDER",
     font="Helvetica 18 bold", width=55)
 greeting.grid(row=0, column=0, sticky='nsew', padx=5, pady=5)
 
-#Browse PDF
+# Browse PDF
 label = tk.Label(window, text="PDF FILE")
 entry = tk.Entry(window, width=35)
-browse_button = tk.Button(window, text="Browse", width=10, height=2, bg='lightgray', fg='black',
-    command=browse_pdf)
+browse_button = ttk.Button(window, text="Browse", command=browse_pdf)
 
 label.grid(row=1, column=0, sticky="w", padx=20)
 entry.grid(row=1, column=0, padx=5)
@@ -70,7 +67,7 @@ select_file_mode.grid(row=3, column=0, sticky="w", padx=20)
 create_file_radio.grid(row=3, column=0)
 update_file_radio.grid(row=3, column=0, sticky="e", padx=5)
 
-#Process PDF
+# Process PDF
 process_button = tk.Button(window, text="Process PDF", command=process_pdf)
 process_button.grid(row=4, column=0, sticky="nsew", padx=200, pady=20)
 
