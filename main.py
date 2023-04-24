@@ -62,7 +62,7 @@ def extract_data_from_pdf(pdf_path):
 
 # create function to save results to spreadsheet
 def save_results(results, output_file, mode='new'):
-    if mode == 'new':
+    if mode == 'create':
         # Write the results to a new excel spreadsheet
         workbook = openpyxl.Workbook()
         worksheet = workbook.active
