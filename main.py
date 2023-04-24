@@ -1,3 +1,5 @@
+from tkinter import messagebox
+
 import PyPDF2
 from PyPDF2 import PdfReader
 import re
